@@ -1,17 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://53gt6okqwcdm"]
+[gd_scene load_steps=14 format=3 uid="uid://53gt6okqwcdm"]
 
+[ext_resource type="Texture2D" uid="uid://beguu1e6gq37f" path="res://Creative Assets/Textures/AllSky_Space_AnotherPlanet Equirect.png" id="1_cx6ym"]
 [ext_resource type="Script" path="res://Scripts/PlayerCtrl.gd" id="1_itthj"]
+[ext_resource type="Script" path="res://Scripts/GoalsManager.gd" id="3_fl35k"]
+[ext_resource type="Material" uid="uid://dtv1vf6dfky1b" path="res://Creative Assets/Materials/Mat_Trail.tres" id="3_t6bsg"]
+[ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_yjouq"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_33lbm"]
+panorama = ExtResource("1_cx6ym")
+
+[sub_resource type="Sky" id="Sky_o51a1"]
+sky_material = SubResource("PanoramaSkyMaterial_33lbm")
+
+[sub_resource type="Environment" id="Environment_2cgjd"]
+background_mode = 2
+sky = SubResource("Sky_o51a1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ajhat"]
 size = Vector3(2.76172, 0.356873, 2.02338)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fe12d"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_avb5f"]
+[sub_resource type="QuadMesh" id="QuadMesh_ry242"]
+material = ExtResource("3_t6bsg")
+size = Vector2(0.02, 0.2)
+orientation = 1
+
+[sub_resource type="Gradient" id="Gradient_2vf2a"]
+offsets = PackedFloat32Array(0.231481, 1)
+colors = PackedColorArray(0.541176, 0.682353, 1, 0.533333, 0, 0, 0, 0)
+
+[sub_resource type="Curve3D" id="Curve3D_3od8c"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0.597107, -0.604929, -16.0795, 0, 0, 0, 0, 0, 0, -23.2379, -0.0900192, -25.3095, 0, 0, 0, 0, 0, 0, -45.6651, -0.448715, -16.9495),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="Main" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2cgjd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8377, 0.177289, 0.516554, -0.546131, 0.27194, 0.792332, 0, -0.945842, 0.324627, 0, 4.96982, 0)
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21596, 19.4354)
+collision_layer = 2
 script = ExtResource("1_itthj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -29,23 +65,29 @@ mesh = SubResource("BoxMesh_fe12d")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.5, 3)
+fov = 105.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -27)
-mesh = SubResource("BoxMesh_avb5f")
+[node name="Particle_Trail" type="CPUParticles3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44075, 0, -0.185302)
+amount = 25
+lifetime = 0.5
+randomness = 0.08
+lifetime_randomness = 0.09
+mesh = SubResource("QuadMesh_ry242")
+direction = Vector3(0, 0, 1)
+spread = 1.0
+gravity = Vector3(0, 0, 0)
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color = Color(0.71043, 0.801597, 0.990616, 1)
+color_ramp = SubResource("Gradient_2vf2a")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -22)
-mesh = SubResource("BoxMesh_avb5f")
+[node name="GoalsManager" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.1184)
+curve = SubResource("Curve3D_3od8c")
+script = ExtResource("3_fl35k")
+_GoalGatePrefab = ExtResource("4_yjouq")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -17)
-mesh = SubResource("BoxMesh_avb5f")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -11)
-mesh = SubResource("BoxMesh_avb5f")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.8377, 0.177289, 0.516554, -0.546131, 0.27194, 0.792332, 0, -0.945842, 0.324627, 0, 4.96982, 0)
+[node name="GoalGate" parent="GoalsManager" instance=ExtResource("4_yjouq")]
+visible = false
