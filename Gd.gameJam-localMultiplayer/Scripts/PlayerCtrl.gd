@@ -6,6 +6,13 @@ extends CharacterBody3D
 @export var _BankingDegrees:float = 25
 @export var _BankingTiltSpeed:float = 2
 
+func _ready() -> void:
+	SignalBus.StartGame.connect(_GameStart)
+
+func _GameStart() -> void:
+	global_position = Vector3.ZERO
+	global_rotation = Vector3.ZERO
+
 func _physics_process(delta: float) -> void:
 	# Both inputs down - turn up
 	if Input.is_action_pressed("p1_rudder_down") && Input.is_action_pressed("p2_rudder_down"):

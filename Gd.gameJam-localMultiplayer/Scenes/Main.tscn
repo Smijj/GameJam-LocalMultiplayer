@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://beguu1e6gq37f" path="res://Creative Assets/Textures/AllSky_Space_AnotherPlanet Equirect.png" id="1_cx6ym"]
 [ext_resource type="Script" path="res://Scripts/PlayerCtrl.gd" id="1_itthj"]
-[ext_resource type="Script" path="res://Scripts/GoalsManager.gd" id="3_fl35k"]
-[ext_resource type="Material" uid="uid://dtv1vf6dfky1b" path="res://Creative Assets/Materials/Mat_Trail.tres" id="3_t6bsg"]
+[ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_fl35k"]
+[ext_resource type="Material" uid="uid://dalimrei6uw8j" path="res://Creative Assets/Materials/Mat_TrailEmitter.tres" id="4_mbak6"]
 [ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_yjouq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_33lbm"]
@@ -21,14 +21,13 @@ size = Vector3(2.76172, 0.356873, 2.02338)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fe12d"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_ry242"]
-material = ExtResource("3_t6bsg")
-size = Vector2(0.02, 0.2)
-orientation = 1
+[sub_resource type="Curve" id="Curve_huhpe"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5625, 0), 0.749867, -3.10619, 0, 0]
+point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_2vf2a"]
-offsets = PackedFloat32Array(0.231481, 1)
-colors = PackedColorArray(0.541176, 0.682353, 1, 0.533333, 0, 0, 0, 0)
+[sub_resource type="Gradient" id="Gradient_maqwg"]
+offsets = PackedFloat32Array(0, 0.454167, 1)
+colors = PackedColorArray(0.222736, 0.740458, 1, 1, 0.290746, 0.763168, 1, 0.9125, 1, 1, 1, 0)
 
 [sub_resource type="Curve3D" id="Curve3D_3od8c"]
 _data = {
@@ -68,26 +67,31 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.5, 3)
 fov = 105.0
 
-[node name="Particle_Trail" type="CPUParticles3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44075, 0, -0.185302)
-amount = 25
-lifetime = 0.5
-randomness = 0.08
-lifetime_randomness = 0.09
-mesh = SubResource("QuadMesh_ry242")
-direction = Vector3(0, 0, 1)
-spread = 1.0
-gravity = Vector3(0, 0, 0)
-scale_amount_min = 0.5
-scale_amount_max = 1.5
-color = Color(0.71043, 0.801597, 0.990616, 1)
-color_ramp = SubResource("Gradient_2vf2a")
+[node name="TrailEmitter" type="TrailEmitter" parent="CharacterBody3D"]
+material = ExtResource("4_mbak6")
+curve = SubResource("Curve_huhpe")
+gradient = SubResource("Gradient_maqwg")
+num_points = 5
+noise_scale = 0.3
+size = 0.05
+update_interval = 0.05
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4174, -0.000353575, -0.218258)
 
-[node name="GoalsManager" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.1184)
+[node name="TrailEmitter2" type="TrailEmitter" parent="CharacterBody3D"]
+material = ExtResource("4_mbak6")
+curve = SubResource("Curve_huhpe")
+gradient = SubResource("Gradient_maqwg")
+num_points = 5
+noise_scale = 0.3
+size = 0.05
+update_interval = 0.05
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42241, -0.000353575, -0.229797)
+
+[node name="FlightTrack" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.362)
 curve = SubResource("Curve3D_3od8c")
 script = ExtResource("3_fl35k")
 _GoalGatePrefab = ExtResource("4_yjouq")
 
-[node name="GoalGate" parent="GoalsManager" instance=ExtResource("4_yjouq")]
+[node name="GoalGate" parent="FlightTrack" instance=ExtResource("4_yjouq")]
 visible = false
