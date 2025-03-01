@@ -1,7 +1,7 @@
 extends Node
 
 var _CurrentLevel:Node3D = null
-var _CurrentLevelData:LevelData = null
+var CurrentLevelData:LevelData = null
 
 func _ready() -> void:
 	MenuManager.OpenMenu("Start")
@@ -9,7 +9,7 @@ func _ready() -> void:
 func StartLevel(levelData:LevelData) -> void:
 	# Load in Level
 	if levelData: 
-		_CurrentLevelData = levelData
+		CurrentLevelData = levelData
 		_CurrentLevel = levelData.PackedLevel.instantiate()
 		add_child(_CurrentLevel)
 	
@@ -17,16 +17,21 @@ func StartLevel(levelData:LevelData) -> void:
 	SignalBus.StartLevel.emit()
 
 func CompleteLevel() -> void:
-	if _CurrentLevelData: 
-		_CurrentLevelData.Completed = true
-		ResourceSaver.save(_CurrentLevelData)
-		_CurrentLevelData = null
-		
-	ToStartMenu()
+	if CurrentLevelData: 
+		CurrentLevelData.Completed = true
+		ResourceSaver.save(CurrentLevelData)
+		#CurrentLevelData = null
+	
+	# Open "You Win" Menu
+	_ExitGameplay()
+	MenuManager.OpenMenu("Win")
+
+func ToLevelSelect() -> void:
+	_ExitGameplay()
+	MenuManager.OpenMenu("LevelSelect")
 
 func ToStartMenu() -> void:
-	get_tree().paused = false
-	if _CurrentLevel != null && !_CurrentLevel.is_queued_for_deletion(): _CurrentLevel.queue_free()
+	_ExitGameplay()
 	MenuManager.OpenMenu("Start")
 
 func Pause() -> void:
@@ -39,3 +44,8 @@ func Resume() -> void:
 	MenuManager.CloseMenus()
 	get_tree().paused = false
 	StateManager.GameState = StateManager.States.GAMEPLAY
+
+
+func _ExitGameplay() -> void:
+	get_tree().paused = false
+	if _CurrentLevel != null && !_CurrentLevel.is_queued_for_deletion(): _CurrentLevel.queue_free()

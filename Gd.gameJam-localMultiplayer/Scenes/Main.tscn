@@ -19,3 +19,30 @@ environment = SubResource("Environment_2cgjd")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8377, 0.177289, 0.516554, -0.546131, 0.27194, 0.792332, 0, -0.945842, 0.324627, 0, 4.96982, 0)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 5.0
+offset_right = 83.0
+offset_bottom = 57.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="GUI/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "- Time Remaining -"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="GUI/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "00:00"
+horizontal_alignment = 1

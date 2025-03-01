@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://g6r5rxpgx4d7"]
+[gd_scene load_steps=2 format=3 uid="uid://bh7d33k8gfktf"]
 
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_1isx7"]
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnQuit.gd" id="2_qidxc"]
+[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_7g2xf"]
 
-[node name="StartMenu" type="CanvasLayer"]
+[node name="WinMenu" type="CanvasLayer"]
 process_mode = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -34,7 +33,7 @@ size_flags_vertical = 3
 [node name="Title" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Turbulence Together"
+text = "Level Complete!"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
@@ -50,16 +49,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="Btn_Start" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Btn_Continue" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Start"
-script = ExtResource("1_1isx7")
+text = "Continue"
+script = ExtResource("1_7g2xf")
 _FocusFirst = true
-
-[node name="Btn_Quit" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Quit"
-script = ExtResource("2_qidxc")
 
 [node name="Spacer2" type="Control" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
