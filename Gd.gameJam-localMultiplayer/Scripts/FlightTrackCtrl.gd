@@ -2,16 +2,18 @@ extends Path3D
 
 @export var _GoalGatePrefab: PackedScene
 
-var _CurrentGoal: GoalGate
-var _NextGoal: GoalGate
-@export var _CurrentGoalIndex: int = 0
-
 var _GoalGates:Array[GoalGate] = []
+var _CurrentGoalIndex: int = 0
 
 func _ready() -> void:
-	SignalBus.StartGame.connect(_GameStart)
+	SignalBus.StartLevel.connect(_LevelStart)
 
-func _GameStart() -> void:
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Pause"):
+		if StateManager.IsGameplay(): GameManager.Pause()
+		else: GameManager.Resume()
+
+func _LevelStart() -> void:
 	# Clear any existing goals
 	if !_GoalGates.is_empty():
 		for gate in _GoalGates:
@@ -70,4 +72,4 @@ func _GoalReachedCallback() -> void:
 	_IncrementGoal()
 
 func _FinalGoalReached() -> void:
-	GameManager.StartGame()
+	GameManager.CompleteLevel()

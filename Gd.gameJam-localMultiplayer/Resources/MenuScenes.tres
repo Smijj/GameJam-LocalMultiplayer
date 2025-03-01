@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MenuScenes" load_steps=5 format=3 uid="uid://dqp5xvabkd5ji"]
+
+[ext_resource type="PackedScene" uid="uid://g6r5rxpgx4d7" path="res://Scenes/Menus/StartMenu.tscn" id="1_cewtp"]
+[ext_resource type="Script" path="res://Scripts/ResourceScripts/MenuScenesResource.gd" id="1_fp4nd"]
+[ext_resource type="PackedScene" uid="uid://nym5dcaeu7sy" path="res://Scenes/Menus/PauseMenu.tscn" id="2_infpd"]
+[ext_resource type="PackedScene" uid="uid://c1fxs4gs6awk0" path="res://Scenes/Menus/LevelSelectMenu.tscn" id="3_8knfv"]
+
+[resource]
+script = ExtResource("1_fp4nd")
+Scenes = {
+"LevelSelect": ExtResource("3_8knfv"),
+"Pause": ExtResource("2_infpd"),
+"Start": ExtResource("1_cewtp")
+}

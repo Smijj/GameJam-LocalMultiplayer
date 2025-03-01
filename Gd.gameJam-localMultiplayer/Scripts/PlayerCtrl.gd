@@ -7,9 +7,9 @@ extends CharacterBody3D
 @export var _BankingTiltSpeed:float = 2
 
 func _ready() -> void:
-	SignalBus.StartGame.connect(_GameStart)
+	SignalBus.StartLevel.connect(_LevelStart)
 
-func _GameStart() -> void:
+func _LevelStart() -> void:
 	global_position = Vector3.ZERO
 	global_rotation = Vector3.ZERO
 

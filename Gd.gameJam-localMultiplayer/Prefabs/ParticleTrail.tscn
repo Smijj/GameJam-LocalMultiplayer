@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://jwg0u7urck8e"]
 
-[ext_resource type="Material" uid="uid://dtv1vf6dfky1b" path="res://Creative Assets/Materials/Mat_Trail.tres" id="1_dqtx7"]
+[ext_resource type="Material" path="res://Creative Assets/Materials/Mat_Trail.tres" id="1_dqtx7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ry242"]
 material = ExtResource("1_dqtx7")
@@ -13,7 +13,7 @@ colors = PackedColorArray(0.541176, 0.682353, 1, 0.533333, 0, 0, 0, 0)
 
 [node name="Particle_Trail" type="CPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44075, 0, -0.185302)
-amount = 25
+amount = 5
 lifetime = 0.5
 randomness = 0.08
 lifetime_randomness = 0.09

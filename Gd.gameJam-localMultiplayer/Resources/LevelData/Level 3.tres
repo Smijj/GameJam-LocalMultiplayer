@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://q7kxo8dg7ul4"]
+
+[ext_resource type="PackedScene" uid="uid://ctcyosg8ubw4d" path="res://Scenes/Level1.tscn" id="1_dgnxj"]
+[ext_resource type="Script" path="res://Scripts/ResourceScripts/LevelDataResource.gd" id="2_7jgka"]
+
+[resource]
+script = ExtResource("2_7jgka")
+PackedLevel = ExtResource("1_dgnxj")
+Completed = false
