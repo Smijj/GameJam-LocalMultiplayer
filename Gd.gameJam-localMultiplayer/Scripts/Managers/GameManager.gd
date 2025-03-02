@@ -13,8 +13,8 @@ func StartLevel(levelData:LevelData) -> void:
 		_CurrentLevel = levelData.PackedLevel.instantiate()
 		add_child(_CurrentLevel)
 	
-	Resume()
 	SignalBus.StartLevel.emit()
+	Resume()
 
 func Restart() -> void:
 	if CurrentLevelData:

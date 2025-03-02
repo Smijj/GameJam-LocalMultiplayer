@@ -5,13 +5,16 @@
 [resource]
 transparency = 1
 depth_draw_mode = 1
-albedo_color = Color(0, 0.407843, 0.933333, 0.607843)
-roughness = 0.15
+albedo_color = Color(0, 0.407843, 0.933333, 0.976471)
+roughness = 0.05
 normal_enabled = true
 normal_texture = ExtResource("1_eq0rc")
-refraction_enabled = true
-refraction_scale = 0.8
+ao_light_affect = 0.21
+subsurf_scatter_strength = 0.1
+subsurf_scatter_texture = ExtResource("1_eq0rc")
+refraction_scale = 0.2
 refraction_texture = ExtResource("1_eq0rc")
 uv1_scale = Vector3(0.03, 0.03, 0.03)
 uv1_triplanar = true
 uv1_world_triplanar = true
+proximity_fade_distance = 122.55

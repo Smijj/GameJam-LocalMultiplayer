@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d01g7qktpk5bw"]
+[gd_scene load_steps=10 format=3 uid="uid://d01g7qktpk5bw"]
 
 [ext_resource type="Script" path="res://Scripts/TimerCtrl.gd" id="1_0x7bo"]
 [ext_resource type="Texture2D" uid="uid://dh4obqtjlaxuf" path="res://Creative Assets/Textures/W_Key_Dark.png" id="2_qb726"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://c1l8mudbirkja" path="res://Creative Assets/Textures/Directional_Arrow_Straight.png" id="4_awte4"]
 [ext_resource type="Texture2D" uid="uid://cphlimgn88s" path="res://Creative Assets/Textures/Arrow_Up_Key_Dark.png" id="6_t07dm"]
 [ext_resource type="Texture2D" uid="uid://cv24idw0i7rpn" path="res://Creative Assets/Textures/Arrow_Down_Key_Dark.png" id="7_ua0e5"]
+[ext_resource type="Script" path="res://Scripts/FadeIn.gd" id="8_cl0lk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arb7s"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="GUI" type="CanvasLayer"]
 
@@ -168,3 +172,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
+
+[node name="FadeIn" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_arb7s")
+script = ExtResource("8_cl0lk")

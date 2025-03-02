@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/ResourceScripts/LevelScenesResource.gd" id="1_mvj72"]
 [ext_resource type="Resource" uid="uid://h13f4xjvsetv" path="res://Resources/LevelData/Level 1.tres" id="2_l0kxt"]
 [ext_resource type="Resource" uid="uid://5wv8yfo25et4" path="res://Resources/LevelData/Level 2.tres" id="3_rs70d"]
-[ext_resource type="Resource" uid="uid://q7kxo8dg7ul4" path="res://Resources/LevelData/Level 3.tres" id="4_7jdho"]
+[ext_resource type="Resource" uid="uid://c1na7b8sqaw8y" path="res://Resources/LevelData/Level 3.tres" id="4_7jdho"]
 
 [resource]
 script = ExtResource("1_mvj72")

@@ -8,7 +8,7 @@
 script = ExtResource("2_5cs6j")
 PackedLevel = ExtResource("1_27ynu")
 LevelName = "Level 1"
-TimeLimit = 15.0
+TimeLimit = 30.0
 SkyBox = ExtResource("2_3wrrj")
 Completed = true
 PersonalCompleteTime = 5.01806
