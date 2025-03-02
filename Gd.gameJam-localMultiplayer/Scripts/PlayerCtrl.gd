@@ -6,12 +6,19 @@ extends CharacterBody3D
 @export var _BankingDegrees:float = 25
 @export var _BankingTiltSpeed:float = 2
 
+@export_group("Refs")
+@export var _StartPos:Marker3D
+
 func _ready() -> void:
 	SignalBus.StartLevel.connect(_LevelStart)
 
 func _LevelStart() -> void:
-	global_position = Vector3.ZERO
-	global_rotation = Vector3.ZERO
+	if _StartPos:
+		global_position = _StartPos.global_position
+		global_rotation = _StartPos.global_rotation
+	else:
+		global_position = Vector3.ZERO
+		global_rotation = Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
 	# Both inputs down - turn up

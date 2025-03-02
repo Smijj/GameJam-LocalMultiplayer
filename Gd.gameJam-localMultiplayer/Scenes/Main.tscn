@@ -25,4 +25,3 @@ script = ExtResource("2_rvyav")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8377, 0.177289, 0.516554, -0.546131, 0.27194, 0.792332, 0, -0.945842, 0.324627, 0, 4.96982, 0)
 light_color = Color(0.931978, 0.94569, 0.798741, 1)
-light_energy = 0.75

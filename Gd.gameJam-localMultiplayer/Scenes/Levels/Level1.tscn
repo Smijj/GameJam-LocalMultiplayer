@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://ctcyosg8ubw4d"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerCtrl.gd" id="1_jnrfu"]
-[ext_resource type="Material" uid="uid://dalimrei6uw8j" path="res://Creative Assets/Materials/Mat_TrailEmitter.tres" id="2_ve5gx"]
-[ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_8k8w3"]
-[ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_e57oo"]
-[ext_resource type="PackedScene" uid="uid://d01g7qktpk5bw" path="res://Scenes/Gui.tscn" id="5_d7dg2"]
+[ext_resource type="Script" path="res://Scripts/PlayerCtrl.gd" id="1_b8s1g"]
+[ext_resource type="Material" uid="uid://dalimrei6uw8j" path="res://Creative Assets/Materials/Mat_TrailEmitter.tres" id="2_6t1if"]
+[ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_2wcig"]
+[ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_st6u8"]
+[ext_resource type="PackedScene" uid="uid://d01g7qktpk5bw" path="res://Scenes/Gui.tscn" id="5_kytn1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lt3yx"]
 size = Vector3(2.76172, 0.356873, 2.02338)
@@ -21,17 +21,20 @@ colors = PackedColorArray(0.222736, 0.740458, 1, 1, 0.290746, 0.763168, 1, 0.912
 
 [sub_resource type="Curve3D" id="Curve3D_285em"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0.597107, -0.604929, -16.0795, 0, 0, 0, 0, 0, 0, -23.2379, -0.0900192, -25.3095, 0, 0, 0, 0, 0, 0, -45.6651, -0.448715, -16.9495),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0.597107, -0.604929, 22.8787, 0, 0, 0, 0, 0, 0, -8.19956, -0.0900192, 55.4559, 0, 0, 0, 0, 0, 0, -19.8678, -0.448715, 67.8331),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
 
 [node name="Level_1" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21596, 19.4354)
+[node name="StartPos" type="Marker3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4.01106)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("_StartPos")]
 collision_layer = 2
-script = ExtResource("1_jnrfu")
+script = ExtResource("1_b8s1g")
+_StartPos = NodePath("../StartPos")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00698853, -0.00302124)
@@ -52,7 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 fov = 105.0
 
 [node name="TrailEmitter" type="TrailEmitter" parent="CharacterBody3D"]
-material = ExtResource("2_ve5gx")
+material = ExtResource("2_6t1if")
 curve = SubResource("Curve_s00qk")
 gradient = SubResource("Gradient_po80x")
 num_points = 5
@@ -62,7 +65,7 @@ update_interval = 0.05
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4174, -0.000353575, -0.218258)
 
 [node name="TrailEmitter2" type="TrailEmitter" parent="CharacterBody3D"]
-material = ExtResource("2_ve5gx")
+material = ExtResource("2_6t1if")
 curve = SubResource("Curve_s00qk")
 gradient = SubResource("Gradient_po80x")
 num_points = 5
@@ -72,12 +75,12 @@ update_interval = 0.05
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42241, -0.000353575, -0.229797)
 
 [node name="FlightTrack" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.362)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.9777)
 curve = SubResource("Curve3D_285em")
-script = ExtResource("3_8k8w3")
-_GoalGatePrefab = ExtResource("4_e57oo")
+script = ExtResource("3_2wcig")
+_GoalGatePrefab = ExtResource("4_st6u8")
 
-[node name="GoalGate" parent="FlightTrack" instance=ExtResource("4_e57oo")]
+[node name="GoalGate" parent="FlightTrack" instance=ExtResource("4_st6u8")]
 visible = false
 
-[node name="GUI" parent="." instance=ExtResource("5_d7dg2")]
+[node name="GUI" parent="." instance=ExtResource("5_kytn1")]

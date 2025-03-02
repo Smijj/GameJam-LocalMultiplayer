@@ -24,10 +24,11 @@ func Restart() -> void:
 		ToLevelSelect()
 
 func CompleteLevel() -> void:
+	SignalBus.CompleteLevel.emit()
+	
 	if CurrentLevelData: 
 		CurrentLevelData.Completed = true
 		ResourceSaver.save(CurrentLevelData)
-		#CurrentLevelData = null
 	
 	# Open "You Win" Menu
 	_ExitGameplay()
