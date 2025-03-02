@@ -1,9 +1,14 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://5wv8yfo25et4"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://5wv8yfo25et4"]
 
 [ext_resource type="PackedScene" uid="uid://ctcyosg8ubw4d" path="res://Scenes/Level1.tscn" id="1_qv4aj"]
 [ext_resource type="Script" path="res://Scripts/ResourceScripts/LevelDataResource.gd" id="2_deqmi"]
+[ext_resource type="Texture2D" uid="uid://beguu1e6gq37f" path="res://Creative Assets/Textures/AllSky_Space_AnotherPlanet Equirect.png" id="2_msdal"]
 
 [resource]
 script = ExtResource("2_deqmi")
 PackedLevel = ExtResource("1_qv4aj")
-Completed = true
+LevelName = "Level 2"
+TimeLimit = 15.0
+SkyBox = ExtResource("2_msdal")
+Completed = false
+PersonalCompleteTime = -1.0

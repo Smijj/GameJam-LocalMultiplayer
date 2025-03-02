@@ -16,6 +16,13 @@ func StartLevel(levelData:LevelData) -> void:
 	Resume()
 	SignalBus.StartLevel.emit()
 
+func Restart() -> void:
+	if CurrentLevelData:
+		_ExitGameplay()
+		StartLevel(CurrentLevelData)
+	else:
+		ToLevelSelect()
+
 func CompleteLevel() -> void:
 	if CurrentLevelData: 
 		CurrentLevelData.Completed = true
@@ -26,12 +33,19 @@ func CompleteLevel() -> void:
 	_ExitGameplay()
 	MenuManager.OpenMenu("Win")
 
+func FailLevel() -> void:
+	# Open "You Lose" Menu
+	_ExitGameplay()
+	MenuManager.OpenMenu("Lose")
+
 func ToLevelSelect() -> void:
 	_ExitGameplay()
+	CurrentLevelData = null
 	MenuManager.OpenMenu("LevelSelect")
 
 func ToStartMenu() -> void:
 	_ExitGameplay()
+	CurrentLevelData = null
 	MenuManager.OpenMenu("Start")
 
 func Pause() -> void:

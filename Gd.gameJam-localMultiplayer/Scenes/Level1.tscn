@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctcyosg8ubw4d"]
+[gd_scene load_steps=11 format=3 uid="uid://ctcyosg8ubw4d"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCtrl.gd" id="1_jnrfu"]
 [ext_resource type="Material" uid="uid://dalimrei6uw8j" path="res://Creative Assets/Materials/Mat_TrailEmitter.tres" id="2_ve5gx"]
 [ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_8k8w3"]
 [ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_e57oo"]
+[ext_resource type="PackedScene" uid="uid://d01g7qktpk5bw" path="res://Scenes/Gui.tscn" id="5_d7dg2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lt3yx"]
 size = Vector3(2.76172, 0.356873, 2.02338)
@@ -78,3 +79,5 @@ _GoalGatePrefab = ExtResource("4_e57oo")
 
 [node name="GoalGate" parent="FlightTrack" instance=ExtResource("4_e57oo")]
 visible = false
+
+[node name="GUI" parent="." instance=ExtResource("5_d7dg2")]

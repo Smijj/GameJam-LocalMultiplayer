@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://d01g7qktpk5bw"]
+
+[ext_resource type="Script" path="res://Scripts/TimerCtrl.gd" id="1_0x7bo"]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_right = 45.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0.701961, 0.819608, 1)
+theme_override_font_sizes/font_size = 10
+text = "- Time Remaining -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.776471, 0.180392, 0.396078, 1)
+theme_override_font_sizes/font_size = 14
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="VBoxContainer/Value" node_paths=PackedStringArray("_TimerLabel")]
+one_shot = true
+script = ExtResource("1_0x7bo")
+_TimerLabel = NodePath("..")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 5.0
+offset_right = 49.0
+offset_bottom = 48.0
+grow_horizontal = 2
