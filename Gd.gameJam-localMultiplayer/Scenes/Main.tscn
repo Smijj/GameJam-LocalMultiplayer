@@ -12,6 +12,9 @@ sky_material = SubResource("PanoramaSkyMaterial_33lbm")
 [sub_resource type="Environment" id="Environment_2cgjd"]
 background_mode = 2
 sky = SubResource("Sky_o51a1")
+fog_mode = 1
+fog_density = 1.0
+fog_sky_affect = 0.35
 
 [node name="Main" type="Node3D"]
 

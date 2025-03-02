@@ -47,6 +47,20 @@ layout_mode = 2
 size_flags_vertical = 3
 columns = 3
 
+[node name="LevelButton" type="VBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer/LevelButtonsContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/LevelButtonsContainer/LevelButton"]
+layout_mode = 2
+text = "  Level 1  "
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer/LevelButtonsContainer/LevelButton"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Best Time: 4s"
+horizontal_alignment = 1
+
 [node name="Spacer2" type="Control" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
