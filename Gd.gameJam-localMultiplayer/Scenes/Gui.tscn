@@ -1,47 +1,170 @@
-[gd_scene load_steps=2 format=3 uid="uid://d01g7qktpk5bw"]
+[gd_scene load_steps=8 format=3 uid="uid://d01g7qktpk5bw"]
 
 [ext_resource type="Script" path="res://Scripts/TimerCtrl.gd" id="1_0x7bo"]
+[ext_resource type="Texture2D" uid="uid://dh4obqtjlaxuf" path="res://Creative Assets/Textures/W_Key_Dark.png" id="2_qb726"]
+[ext_resource type="Script" path="res://Scripts/ControlsUICtrl.gd" id="2_rdk5s"]
+[ext_resource type="Texture2D" uid="uid://ct4ln6eagb4f3" path="res://Creative Assets/Textures/S_Key_Dark.png" id="3_jyqni"]
+[ext_resource type="Texture2D" uid="uid://c1l8mudbirkja" path="res://Creative Assets/Textures/Directional_Arrow_Straight.png" id="4_awte4"]
+[ext_resource type="Texture2D" uid="uid://cphlimgn88s" path="res://Creative Assets/Textures/Arrow_Up_Key_Dark.png" id="6_t07dm"]
+[ext_resource type="Texture2D" uid="uid://cv24idw0i7rpn" path="res://Creative Assets/Textures/Arrow_Down_Key_Dark.png" id="7_ua0e5"]
 
 [node name="GUI" type="CanvasLayer"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TimerContainer" type="VBoxContainer" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -45.0
-offset_right = 45.0
-offset_bottom = 35.0
+offset_left = -60.0
+offset_top = 5.0
+offset_right = 60.0
+offset_bottom = 54.0
 grow_horizontal = 2
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="TimerContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.976471, 0.701961, 0.819608, 1)
+
+[node name="Title" type="Label" parent="TimerContainer/PanelContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "- Time Remaining -"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="VBoxContainer"]
+[node name="Value" type="Label" parent="TimerContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.776471, 0.180392, 0.396078, 1)
+theme_override_colors/font_color = Color(0.984314, 0.545098, 0.141176, 1)
 theme_override_font_sizes/font_size = 14
 text = "00:00"
 horizontal_alignment = 1
 
-[node name="Timer" type="Timer" parent="VBoxContainer/Value" node_paths=PackedStringArray("_TimerLabel")]
+[node name="Timer" type="Timer" parent="TimerContainer/Value" node_paths=PackedStringArray("_TimerLabel")]
 one_shot = true
 script = ExtResource("1_0x7bo")
 _TimerLabel = NodePath("..")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -49.0
+[node name="ControlsUIContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("_ControlUp", "_ControlDown", "_DirIndicator")]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_right = 0.2
+offset_left = -55.0
 offset_top = 5.0
-offset_right = 49.0
-offset_bottom = 48.0
+offset_right = 55.0
+offset_bottom = 130.0
 grow_horizontal = 2
+script = ExtResource("2_rdk5s")
+_ControlUp = NodePath("HBoxContainer/VBoxContainer/Control_Up")
+_ControlDown = NodePath("HBoxContainer/VBoxContainer/Control_Down")
+_DirIndicator = NodePath("HBoxContainer/Direction_Indicator")
+
+[node name="PanelContainer" type="PanelContainer" parent="ControlsUIContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ControlsUIContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 16
+text = "- Player 1 -"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlsUIContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Spacer" type="Control" parent="ControlsUIContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlsUIContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -5
+
+[node name="Control_Up" type="TextureRect" parent="ControlsUIContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("2_qb726")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Control_Down" type="TextureRect" parent="ControlsUIContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("3_jyqni")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Direction_Indicator" type="TextureRect" parent="ControlsUIContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+texture = ExtResource("4_awte4")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="ControlsUIContainer2" type="VBoxContainer" parent="." node_paths=PackedStringArray("_ControlUp", "_ControlDown", "_DirIndicator")]
+anchors_preset = -1
+anchor_left = 0.8
+anchor_right = 0.8
+offset_left = -55.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 130.0
+grow_horizontal = 2
+script = ExtResource("2_rdk5s")
+_PlayerInput = 1
+_ControlUp = NodePath("HBoxContainer/VBoxContainer/Control_Up")
+_ControlDown = NodePath("HBoxContainer/VBoxContainer/Control_Down")
+_DirIndicator = NodePath("HBoxContainer/Direction_Indicator")
+
+[node name="PanelContainer" type="PanelContainer" parent="ControlsUIContainer2"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ControlsUIContainer2/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 16
+text = "- Player 2 -"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlsUIContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Direction_Indicator" type="TextureRect" parent="ControlsUIContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+texture = ExtResource("4_awte4")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlsUIContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -5
+
+[node name="Control_Up" type="TextureRect" parent="ControlsUIContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("6_t07dm")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Control_Down" type="TextureRect" parent="ControlsUIContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("7_ua0e5")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Spacer" type="Control" parent="ControlsUIContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
