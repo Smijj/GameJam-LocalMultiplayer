@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dihm1mo5dlpwo"
+path="res://.godot/imported/(Level) napping_on_a_cloud.ogg-378047eaa5d30f218f5b381fd0cdc2be.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/(Level) napping_on_a_cloud.ogg"
+dest_files=["res://.godot/imported/(Level) napping_on_a_cloud.ogg-378047eaa5d30f218f5b381fd0cdc2be.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

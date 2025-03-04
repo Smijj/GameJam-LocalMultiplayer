@@ -3,8 +3,18 @@ extends Node
 var _CurrentLevel:Node3D = null
 var CurrentLevelData:LevelData = null
 
+var _MainMenuTrack: AudioStream = preload("res://Audio/Music/(Menu) Ryan Yunck - Silent World.mp3")
+var _LevelTracks: Array[AudioStream] = [
+	preload("res://Audio/Music/(Level) ChillLofi.ogg"),
+	preload("res://Audio/Music/(Level) napping_on_a_cloud.ogg"),
+	preload("res://Audio/Music/(Level) symphony - 01 clouds.mp3"),
+]
+
 func _ready() -> void:
 	MenuManager.OpenMenu("Start")
+	
+	# Play start menu music
+	AudioHandler.PlayMusic(_MainMenuTrack)
 
 func StartLevel(levelData:LevelData) -> void:
 	# Load in Level
@@ -15,11 +25,17 @@ func StartLevel(levelData:LevelData) -> void:
 	
 	SignalBus.StartLevel.emit()
 	Resume()
+	
+	# Play a random Level Song
+	AudioHandler.PlayMusic(_LevelTracks.pick_random())
 
 func Restart() -> void:
 	if CurrentLevelData:
 		_ExitGameplay()
-		StartLevel(CurrentLevelData)
+		_CurrentLevel = CurrentLevelData.PackedLevel.instantiate()
+		add_child(_CurrentLevel)
+		SignalBus.StartLevel.emit()
+		Resume()
 	else:
 		ToLevelSelect()
 
@@ -48,6 +64,9 @@ func ToStartMenu() -> void:
 	_ExitGameplay()
 	CurrentLevelData = null
 	MenuManager.OpenMenu("Start")
+	
+	# Play start menu music
+	AudioHandler.PlayMusic(_MainMenuTrack)
 
 func Pause() -> void:
 	if !StateManager.IsGameplay(): return

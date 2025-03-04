@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dxt70xtegmqqg"
+path="res://.godot/imported/(Level) ChillLofi.ogg-db2f51e50a92b22c373b1986f1e2807a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/(Level) ChillLofi.ogg"
+dest_files=["res://.godot/imported/(Level) ChillLofi.ogg-db2f51e50a92b22c373b1986f1e2807a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

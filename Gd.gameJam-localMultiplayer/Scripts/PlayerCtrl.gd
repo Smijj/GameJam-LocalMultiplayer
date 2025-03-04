@@ -6,19 +6,21 @@ extends CharacterBody3D
 @export var _BankingDegrees:float = 25
 @export var _BankingTiltSpeed:float = 2
 
-@export_group("Refs")
-@export var _StartPos:Marker3D
+@export_group("Audio")
+@export var _PlaneSFX1:AudioStream
+@export var _PlaneSFX2:AudioStream
+@export var _WindSFX:AudioStream
+@export var _ExplosionSFX:AudioStream
 
 func _ready() -> void:
-	SignalBus.StartLevel.connect(_LevelStart)
+	AudioHandler.PlayAmbient(_PlaneSFX1)
+	AudioHandler.PlayAmbient(_PlaneSFX2)
+	AudioHandler.PlayAmbient(_WindSFX)
 
-func _LevelStart() -> void:
-	if _StartPos:
-		global_position = _StartPos.global_position
-		global_rotation = _StartPos.global_rotation
-	else:
-		global_position = Vector3.ZERO
-		global_rotation = Vector3.ZERO
+func _exit_tree() -> void:
+	AudioHandler.StopAmbient(_PlaneSFX1)
+	AudioHandler.StopAmbient(_PlaneSFX2)
+	AudioHandler.StopAmbient(_WindSFX)
 
 func _physics_process(delta: float) -> void:
 	# Both inputs down - turn up

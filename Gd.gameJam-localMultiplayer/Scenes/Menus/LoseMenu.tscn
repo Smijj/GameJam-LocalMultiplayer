@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_468cn"]
 [ext_resource type="Script" path="res://Scripts/MenuScripts/BtnRestart.gd" id="1_ob368"]
 
-[node name="WinMenu" type="CanvasLayer"]
+[node name="LoseMenu" type="CanvasLayer"]
 process_mode = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

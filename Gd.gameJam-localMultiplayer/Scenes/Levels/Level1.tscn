@@ -20,8 +20,9 @@ point_count = 4
 [node name="StartPos" type="Marker3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.36356, 0, -1.70994)
 
-[node name="Player" parent="." instance=ExtResource("1_srkd8")]
+[node name="Player" parent="." node_paths=PackedStringArray("_StartPos") instance=ExtResource("1_srkd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.09013, -8.69217)
+_StartPos = NodePath("../StartPos")
 
 [node name="FlightTrack" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.9777)
