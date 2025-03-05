@@ -10,5 +10,5 @@ PackedLevel = ExtResource("1_78fdi")
 LevelName = "Level 3"
 TimeLimit = 15.0
 SkyBox = ExtResource("2_t4mj1")
-Completed = true
-PersonalCompleteTime = 10.1581
+Completed = false
+PersonalCompleteTime = -1.0

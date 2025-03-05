@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh7d33k8gfktf"]
+[gd_scene load_steps=3 format=3 uid="uid://bh7d33k8gfktf"]
 
 [ext_resource type="Script" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_7g2xf"]
+[ext_resource type="Script" path="res://Scripts/MenuScripts/WinMenu.gd" id="1_8ysoa"]
 
-[node name="WinMenu" type="CanvasLayer"]
+[node name="WinMenu" type="CanvasLayer" node_paths=PackedStringArray("_TxtBestTime")]
 process_mode = 3
+script = ExtResource("1_8ysoa")
+_TxtBestTime = NodePath("PanelContainer/HBoxContainer/VBoxContainer/Txt_BestTime")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -35,6 +38,27 @@ layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Level Complete!"
 horizontal_alignment = 1
+
+[node name="Txt_BestTime" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Best Time: "
+horizontal_alignment = 1
+
+[node name="Txt_NewBest" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(0.984314, 0.545098, 0.141176, 1)
+theme_override_font_sizes/font_size = 12
+text = "- New Best! -"
+horizontal_alignment = 1
+
+[node name="Spacer3" type="Control" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -27,13 +27,13 @@ Also Instantiates 2 AudioPlayers for regular music.
 func _PreloadAudioPlayers() -> void:
 	# Create Music AudioPlayer instance
 	_MusicAudioPlayer = AudioStreamPlayer.new()
-	_MusicAudioPlayer.bus = SFX_BUS
+	_MusicAudioPlayer.bus = MUSIC_BUS
 	_MusicAudioPlayer.name = "Music_AudioStreamPlayer"
 	add_child(_MusicAudioPlayer)
 	
 	# Create Music Transition AudioPlayer instance
 	_TransientAudioPlayer = AudioStreamPlayer.new()
-	_TransientAudioPlayer.bus = SFX_BUS
+	_TransientAudioPlayer.bus = MUSIC_BUS
 	_TransientAudioPlayer.name = "Transient_AudioStreamPlayer"
 	add_child(_TransientAudioPlayer)
 	
@@ -89,12 +89,16 @@ func PlayMusic(music:AudioStream, bus:String = MUSIC_BUS) -> void:
 	# if there is no music currently playing or the transient audioplayer doesnt exist, just set the music and play it.
 	if !_TransientAudioPlayer || !_CurrentTrack: 
 		_MusicAudioPlayer.stream = music
+		_MusicAudioPlayer.bus = bus
 		_MusicAudioPlayer.volume_db = 0
 		_MusicAudioPlayer.play()
 		_CurrentTrack = music
 		return
 	
 	## Otherwise, if track is already playing
+	_MusicAudioPlayer.bus = bus
+	_TransientAudioPlayer.bus = bus
+	
 	# Fade current track out - Muisc Player vol down
 	if _MusicFade: _MusicFade.kill()
 	_MusicFade = create_tween().set_parallel(true)

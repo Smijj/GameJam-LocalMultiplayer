@@ -6,7 +6,7 @@ var totalTimeTaken:float = 0
 func _ready() -> void:
 	timeout.connect(_Timeout)
 	SignalBus.StartLevel.connect(_LevelStart)
-	SignalBus.CompleteLevel.connect(_LevelStart)
+	SignalBus.CompleteLevel.connect(_LevelComplete)
 	SignalBus.GoalGateReached.connect(_AddTime)
 
 func _LevelStart() -> void:
