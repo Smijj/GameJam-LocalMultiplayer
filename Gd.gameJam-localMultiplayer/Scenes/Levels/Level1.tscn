@@ -8,29 +8,32 @@
 
 [sub_resource type="Curve3D" id="Curve3D_285em"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0.597107, -0.604929, 22.8787, 0, 0, 0, 0, 0, 0, -8.19956, -0.0900192, 55.4559, 0, 0, 0, 0, 0, 0, -19.8678, -0.448715, 67.8331),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -6.4575, 0.918156, -12.2188, 0, 0, 0, 0, 0, 0, -3.66196, 0.507862, -48.5781, 0, 0, 0, 0, 0, 0, -15.6688, 0.0281229, -64.6239, 0, 0, 0, 0, 0, 0, -36.365, 2.61208, -56.3994, 0, 0, 0, 0, 0, 0, -62.942, 7.74634, -43.6688, 0, 0, 0, 0, 0, 0, -78.2534, 12.6719, -31.2485, 0, 0, 0, 0, 0, 0, -107.939, 13.181, -25.0159, 0, 0, 0, 0, 0, 0, -124.087, 14.8284, -33.7181, 0, 0, 0, 0, 0, 0, -119.034, 12.0014, -51.41, 0, 0, 0, 0, 0, 0, -99.0736, 10.1719, -56.6912, 0, 0, 0, 0, 0, 0, -83.992, 5.63527, -42.6819, 0, 0, 0, 0, 0, 0, -74.6805, 0.657354, -16.8283, 0, 0, 0, 0, 0, 0, -64.4079, 4.30951, 6.6389, 0, 0, 0, 0, 0, 0, -37.656, 3.71406, 18.0461, 0, 0, 0, 0, 0, 0, -15.2128, 5.00885, 14.594),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 4
+point_count = 15
 
 [node name="Level_1" type="Node3D"]
 
 [node name="GUI" parent="." instance=ExtResource("5_kytn1")]
 
 [node name="StartPos" type="Marker3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.36356, 0, -1.70994)
+transform = Transform3D(0.995116, 0, -0.0987119, 0, 1, 0, 0.0987119, 0, 0.995116, 77.5747, -0.117052, 55.379)
 
 [node name="Player" parent="." node_paths=PackedStringArray("_StartPos") instance=ExtResource("1_srkd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.09013, -8.69217)
 _StartPos = NodePath("../StartPos")
 
 [node name="FlightTrack" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.9777)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.7607, -1.12961, 44.5634)
 curve = SubResource("Curve3D_285em")
 script = ExtResource("3_2wcig")
 _GoalGatePrefab = ExtResource("4_st6u8")
 
-[node name="GoalGate" parent="FlightTrack" instance=ExtResource("4_st6u8")]
-visible = false
-
 [node name="Level1" parent="." instance=ExtResource("5_lhnwe")]
+
+[node name="StaticBody3D" parent="Level1/Island1" index="0" groups=["Bounds"]]
+
+[node name="StaticBody3D" parent="Level1/Island2" index="0" groups=["Bounds"]]
+
+[editable path="Level1"]

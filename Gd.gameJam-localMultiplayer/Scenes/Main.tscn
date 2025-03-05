@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://53gt6okqwcdm"]
+[gd_scene load_steps=11 format=3 uid="uid://53gt6okqwcdm"]
 
 [ext_resource type="Texture2D" uid="uid://beguu1e6gq37f" path="res://Creative Assets/Textures/AllSky_Space_AnotherPlanet Equirect.png" id="1_cx6ym"]
 [ext_resource type="Script" path="res://Scripts/EnvCtrl.gd" id="2_rvyav"]
@@ -118,6 +118,9 @@ shader_parameter/texture_normal = ExtResource("3_re0cn")
 material = SubResource("ShaderMaterial_ydbq3")
 size = Vector3(1000, 1, 1000)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_37fkw"]
+plane = Plane(0, 1, 0, -5)
+
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -126,9 +129,13 @@ script = ExtResource("2_rvyav")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8377, 0.177289, 0.516554, -0.546131, 0.27194, 0.792332, 0, -0.945842, 0.324627, 0, 4.96982, 0)
-visible = false
-light_color = Color(0.931978, 0.94569, 0.798741, 1)
+light_color = Color(0.899146, 0.769218, 0.718286, 1)
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 mesh = SubResource("BoxMesh_nkd6d")
+
+[node name="WaterBoundary" type="StaticBody3D" parent="." groups=["Bounds"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterBoundary"]
+shape = SubResource("WorldBoundaryShape3D_37fkw")

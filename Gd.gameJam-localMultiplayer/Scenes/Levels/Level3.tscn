@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://3utkh2oo7l5d"]
+
+[ext_resource type="PackedScene" uid="uid://d01g7qktpk5bw" path="res://Scenes/Gui.tscn" id="1_x0p76"]
+[ext_resource type="PackedScene" uid="uid://cfav877acqvac" path="res://Prefabs/Player.tscn" id="2_iqhqg"]
+[ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_ude42"]
+[ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_2egie"]
+[ext_resource type="PackedScene" uid="uid://dbydo54wg56ua" path="res://Imports/Level1.blend" id="5_1qwac"]
+
+[sub_resource type="Curve3D" id="Curve3D_285em"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.401409, -3.20704, -9.61095, 0, 0, 0, 0, 0, 0, -7.40078, -0.31766, -34.0827, 0, 0, 0, 0, 0, 0, 2.2052, -1.43153, -58.4793, 0, 0, 0, 0, 0, 0, 18.5624, -3.80487, -59.5656, 0, 0, 0, 0, 0, 0, 30.6439, -5.24268, -47.3443, 0, 0, 0, 0, 0, 0, 43.2847, -6.53787, -17.2141, 0, 0, 0, 0, 0, 0, 62.6016, -8.21608, -4.80523, 0, 0, 0, 0, 0, 0, 68.7906, -3.93839, 13.8848, 0, 0, 0, 0, 0, 0, 58.4036, 2.77427, 25.2247, 0, 0, 0, 0, 0, 0, 39.0192, 8.54382, 24.4378, 0, 0, 0, 0, 0, 0, 18.4376, 14.6006, 14.6656, 0, 0, 0, 0, 0, 0, 5.03694, 21.7292, 2.79548, 0, 0, 0, 0, 0, 0, 4.15054, 21.7955, -14.8078, 0, 0, 0, 0, 0, 0, 12.9462, 18.5369, -26.2388, 0, 0, 0, 0, 0, 0, 25.5735, 15.3014, -25.0162, 0, 0, 0, 0, 0, 0, 45.8019, 4.28294, -31.7068),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 16
+
+[node name="Level_1" type="Node3D"]
+
+[node name="GUI" parent="." instance=ExtResource("1_x0p76")]
+
+[node name="StartPos" type="Marker3D" parent="."]
+transform = Transform3D(0.951739, 0, 0.306908, 0, 1, 0, -0.306908, 0, 0.951739, 27.1741, 5.75009, 51.7027)
+
+[node name="Player" parent="." node_paths=PackedStringArray("_StartPos") instance=ExtResource("2_iqhqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.09013, -8.69217)
+_StartPos = NodePath("../StartPos")
+
+[node name="FlightTrack" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0702, 9.07551, 45.9)
+curve = SubResource("Curve3D_285em")
+script = ExtResource("3_ude42")
+_GoalGatePrefab = ExtResource("4_2egie")
+
+[node name="Level1" parent="." instance=ExtResource("5_1qwac")]
+
+[node name="StaticBody3D" parent="Level1/Island1" index="0" groups=["Bounds"]]
+
+[node name="StaticBody3D" parent="Level1/Island2" index="0" groups=["Bounds"]]
+
+[editable path="Level1"]

@@ -12,17 +12,46 @@ extends CharacterBody3D
 @export var _WindSFX:AudioStream
 @export var _ExplosionSFX:AudioStream
 
+var _HitBounds:bool = false
+
 func _ready() -> void:
+	SignalBus.StartLevel.connect(_LevelStart)
+	StateManager.OnGameStateChanged.connect(_GameStateChanged)
+
+func _GameStateChanged(newState: StateManager.States) -> void:
+	if newState != StateManager.States.GAMEPLAY:
+		_StopAmbientSFX()
+	else:
+		_PlayAmbientSFX()
+
+func _LevelStart() -> void:
+	var _HitBounds:bool = false
+	_PlayAmbientSFX()
+
+func _exit_tree() -> void:
+	_StopAmbientSFX()
+
+func _PlayAmbientSFX() -> void:
 	AudioHandler.PlayAmbient(_PlaneSFX1)
 	AudioHandler.PlayAmbient(_PlaneSFX2)
 	AudioHandler.PlayAmbient(_WindSFX)
-
-func _exit_tree() -> void:
+func _StopAmbientSFX() -> void:
 	AudioHandler.StopAmbient(_PlaneSFX1)
 	AudioHandler.StopAmbient(_PlaneSFX2)
 	AudioHandler.StopAmbient(_WindSFX)
 
+
 func _physics_process(delta: float) -> void:
+	if !_HitBounds:
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+			if collider.is_in_group("Bounds"):
+				_HitBounds = true
+				AudioHandler.PlaySFX(_ExplosionSFX)
+				GameManager.FailLevel()
+				
+	
 	# Both inputs down - turn up
 	if Input.is_action_pressed("p1_rudder_down") && Input.is_action_pressed("p2_rudder_down"):
 		# Adjust Roll

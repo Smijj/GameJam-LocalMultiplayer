@@ -40,7 +40,15 @@ horizontal_alignment = 1
 [node name="Sub-Title" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
-text = "Ran out of time"
+text = "Ran out of time (or crashed)"
+horizontal_alignment = 1
+
+[node name="Sub-Title2" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(0.384314, 0.278431, 0.388235, 1)
+theme_override_font_sizes/font_size = 10
+text = "Tip: Don't hit the rocks or the water~"
 horizontal_alignment = 1
 
 [node name="Spacer3" type="Control" parent="PanelContainer/HBoxContainer/VBoxContainer"]

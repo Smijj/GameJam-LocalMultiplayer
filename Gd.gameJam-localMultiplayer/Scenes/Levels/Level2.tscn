@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdgi143783tc5"]
+
+[ext_resource type="PackedScene" uid="uid://d01g7qktpk5bw" path="res://Scenes/Gui.tscn" id="1_1i3dx"]
+[ext_resource type="PackedScene" uid="uid://cfav877acqvac" path="res://Prefabs/Player.tscn" id="2_q1fei"]
+[ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_p318u"]
+[ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_e8315"]
+[ext_resource type="PackedScene" uid="uid://dbydo54wg56ua" path="res://Imports/Level1.blend" id="5_sob1p"]
+
+[sub_resource type="Curve3D" id="Curve3D_285em"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25.0824, 0.51905, -6.46484, 0, 0, 0, 0, 0, 0, 47.1022, -0.284024, -19.7437, 0, 0, 0, 0, 0, 0, 62.5246, 1.84054, -12.8099, 0, 0, 0, 0, 0, 0, 62.5415, 5.50702, -0.105578, 0, 0, 0, 0, 0, 0, 53.6142, 8.73765, 8.99984, 0, 0, 0, 0, 0, 0, 38.7197, 18.9125, 16.8178, 0, 0, 0, 0, 0, 0, 21.9392, 25.5211, 36.1736, 0, 0, 0, 0, 0, 0, 32.6086, 30.1639, 53.9172, 0, 0, 0, 0, 0, 0, 51.5777, 30.3648, 51.9287, 0, 0, 0, 0, 0, 0, 55.929, 31.8884, 34.8987, 0, 0, 0, 0, 0, 0, 25.79, 25.2075, 14.8173, 0, 0, 0, 0, 0, 0, -43.533, 28.3286, 4.42831),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[node name="Level_1" type="Node3D"]
+
+[node name="GUI" parent="." instance=ExtResource("1_1i3dx")]
+
+[node name="StartPos" type="Marker3D" parent="."]
+transform = Transform3D(0.318612, 0, -0.947885, 0, 1, 0, 0.947885, 0, 0.318612, -0.964499, 1.2267, 8.07015)
+
+[node name="Player" parent="." node_paths=PackedStringArray("_StartPos") instance=ExtResource("2_q1fei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.09013, -8.69217)
+_StartPos = NodePath("../StartPos")
+
+[node name="FlightTrack" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8122, 0.638767, 2.62348)
+curve = SubResource("Curve3D_285em")
+script = ExtResource("3_p318u")
+_GoalGatePrefab = ExtResource("4_e8315")
+
+[node name="Level1" parent="." instance=ExtResource("5_sob1p")]
+
+[node name="StaticBody3D" parent="Level1/Island1" index="0" groups=["Bounds"]]
+
+[node name="StaticBody3D" parent="Level1/Island2" index="0" groups=["Bounds"]]
+
+[editable path="Level1"]
