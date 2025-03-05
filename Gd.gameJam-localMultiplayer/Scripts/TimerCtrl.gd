@@ -21,9 +21,12 @@ When level is completed, save the amount of time the player took to complete it 
 """
 func _LevelComplete() -> void:
 	if GameManager.CurrentLevelData: 
+		var newBest: bool = false
 		if totalTimeTaken < GameManager.CurrentLevelData.PersonalCompleteTime || GameManager.CurrentLevelData.PersonalCompleteTime < 0:
 			GameManager.CurrentLevelData.PersonalCompleteTime = totalTimeTaken
 			ResourceSaver.save(GameManager.CurrentLevelData)
+			newBest = true
+		SignalBus.OnBestTimeChanged.emit(totalTimeTaken, newBest)
 
 func _Timeout() -> void:
 	GameManager.FailLevel()

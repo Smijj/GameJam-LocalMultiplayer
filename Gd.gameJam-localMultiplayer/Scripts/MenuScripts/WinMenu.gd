@@ -1,11 +1,18 @@
 extends CanvasLayer
 
-@export var _TxtBestTime: Label
+@export var _TxtYourTime: Label
 @export var _TxtNewBestTime: Label
 
 func _ready() -> void:
-	SignalBus.CompleteLevel.connect(_LevelComplete)
+	SignalBus.OnBestTimeChanged.connect(_OnBestTimeChanged)
+	_TxtNewBestTime.visible = false
 
-func _LevelComplete() -> void:
-	if !GameManager.CurrentLevelData: return
-	if _TxtBestTime: _TxtBestTime.text = "Best Time: "+str(GameManager.CurrentLevelData.PersonalCompleteTime as int)+"s"
+func _OnBestTimeChanged(time: float, newBest: bool) -> void:
+	if _TxtYourTime: 
+		_TxtYourTime.text = "Your Time: "+str(time as int)+"s"
+	if _TxtNewBestTime:
+		if newBest:
+			_TxtNewBestTime.visible = true
+		else:
+			_TxtNewBestTime.visible = false
+			
