@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://3utkh2oo7l5d"]
+[gd_scene load_steps=13 format=3 uid="uid://3utkh2oo7l5d"]
 
+[ext_resource type="Texture2D" uid="uid://b8vuqkm4aex3w" path="res://CreativeAssets/Skybox/Epic_GloriousPink_EquiRect.png" id="1_vxndd"]
 [ext_resource type="PackedScene" uid="uid://d01g7qktpk5bw" path="res://Scenes/Gui.tscn" id="1_x0p76"]
 [ext_resource type="PackedScene" uid="uid://cfav877acqvac" path="res://Prefabs/Player.tscn" id="2_iqhqg"]
 [ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_ude42"]
@@ -7,6 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://dbydo54wg56ua" path="res://Imports/Level1.blend" id="5_1qwac"]
 [ext_resource type="AudioStream" uid="uid://ihxj1kvijllp" path="res://Audio/SFX/win sound 2-1.wav" id="5_oces4"]
 [ext_resource type="AudioStream" uid="uid://8otjrspgh1cu" path="res://Audio/SFX/Won!.wav" id="6_8ko28"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_d3ujl"]
+panorama = ExtResource("1_vxndd")
+
+[sub_resource type="Sky" id="Sky_f3ku1"]
+sky_material = SubResource("PanoramaSkyMaterial_d3ujl")
+
+[sub_resource type="Environment" id="Environment_xg8xr"]
+background_mode = 2
+sky = SubResource("Sky_f3ku1")
+fog_mode = 1
+fog_light_color = Color(0.0715372, 0.678195, 0.918925, 1)
+fog_density = 0.1775
+fog_sky_affect = 0.492
 
 [sub_resource type="Curve3D" id="Curve3D_285em"]
 _data = {
@@ -16,6 +31,9 @@ _data = {
 point_count = 16
 
 [node name="Level_1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xg8xr")
 
 [node name="GUI" parent="." instance=ExtResource("1_x0p76")]
 

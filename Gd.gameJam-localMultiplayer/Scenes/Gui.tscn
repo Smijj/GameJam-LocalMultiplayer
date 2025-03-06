@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://d01g7qktpk5bw"]
 
 [ext_resource type="Script" path="res://Scripts/TimerCtrl.gd" id="1_0x7bo"]
-[ext_resource type="Texture2D" uid="uid://dh4obqtjlaxuf" path="res://Creative Assets/Textures/W_Key_Dark.png" id="2_qb726"]
+[ext_resource type="Texture2D" uid="uid://dh4obqtjlaxuf" path="res://CreativeAssets/Textures/W_Key_Dark.png" id="2_qb726"]
 [ext_resource type="Script" path="res://Scripts/ControlsUICtrl.gd" id="2_rdk5s"]
-[ext_resource type="Texture2D" uid="uid://ct4ln6eagb4f3" path="res://Creative Assets/Textures/S_Key_Dark.png" id="3_jyqni"]
-[ext_resource type="Texture2D" uid="uid://c1l8mudbirkja" path="res://Creative Assets/Textures/Directional_Arrow_Straight.png" id="4_awte4"]
-[ext_resource type="Texture2D" uid="uid://cphlimgn88s" path="res://Creative Assets/Textures/Arrow_Up_Key_Dark.png" id="6_t07dm"]
-[ext_resource type="Texture2D" uid="uid://cv24idw0i7rpn" path="res://Creative Assets/Textures/Arrow_Down_Key_Dark.png" id="7_ua0e5"]
+[ext_resource type="Texture2D" uid="uid://ct4ln6eagb4f3" path="res://CreativeAssets/Textures/S_Key_Dark.png" id="3_jyqni"]
+[ext_resource type="Texture2D" uid="uid://c1l8mudbirkja" path="res://CreativeAssets/Textures/Directional_Arrow_Straight.png" id="4_awte4"]
+[ext_resource type="Texture2D" uid="uid://cphlimgn88s" path="res://CreativeAssets/Textures/Arrow_Up_Key_Dark.png" id="6_t07dm"]
+[ext_resource type="Texture2D" uid="uid://cv24idw0i7rpn" path="res://CreativeAssets/Textures/Arrow_Down_Key_Dark.png" id="7_ua0e5"]
 [ext_resource type="Script" path="res://Scripts/FadeIn.gd" id="8_cl0lk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arb7s"]

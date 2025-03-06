@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://jwg0u7urck8e"]
 
-[ext_resource type="Material" path="res://Creative Assets/Materials/Mat_Trail.tres" id="1_dqtx7"]
+[ext_resource type="Material" uid="uid://b20r5n6vreo" path="res://CreativeAssets/Materials/Mat_Trail.tres" id="1_dqtx7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ry242"]
 material = ExtResource("1_dqtx7")

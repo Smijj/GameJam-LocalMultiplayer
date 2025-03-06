@@ -57,6 +57,7 @@ script = ExtResource("1_1isx7")
 _FocusFirst = true
 
 [node name="Btn_Quit" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "Quit"
 script = ExtResource("2_qidxc")

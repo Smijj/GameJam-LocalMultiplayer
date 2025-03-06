@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerCtrl.gd" id="1_02epx"]
 [ext_resource type="Script" path="res://Scripts/SetPlayerPos.gd" id="1_lf4cs"]
-[ext_resource type="Material" uid="uid://dalimrei6uw8j" path="res://Creative Assets/Materials/Mat_TrailEmitter.tres" id="2_t6di3"]
+[ext_resource type="Material" uid="uid://dalimrei6uw8j" path="res://CreativeAssets/Materials/Mat_TrailEmitter.tres" id="2_t6di3"]
 [ext_resource type="AudioStream" uid="uid://cw3uw88u7hs1y" path="res://Audio/SFX/airplane_prop.ogg" id="3_a2sby"]
 [ext_resource type="Script" path="res://Scripts/CameraCtrl.gd" id="3_m2tto"]
 [ext_resource type="AudioStream" uid="uid://c1goepuu4exmm" path="res://Audio/SFX/plane.ogg" id="4_vbjsb"]

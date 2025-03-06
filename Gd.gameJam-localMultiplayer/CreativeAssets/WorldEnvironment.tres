@@ -1,0 +1,11 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://b1vfdtxmeikbm"]
+
+[ext_resource type="Sky" uid="uid://c42q63hs3blva" path="res://CreativeAssets/Sky.tres" id="1_qcn4x"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_qcn4x")
+fog_mode = 1
+fog_light_color = Color(0.0715372, 0.678195, 0.918925, 1)
+fog_density = 0.1775
+fog_sky_affect = 0.492

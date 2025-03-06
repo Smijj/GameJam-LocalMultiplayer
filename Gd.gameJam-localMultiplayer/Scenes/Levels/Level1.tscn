@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctcyosg8ubw4d"]
+[gd_scene load_steps=13 format=3 uid="uid://ctcyosg8ubw4d"]
 
+[ext_resource type="Texture2D" uid="uid://ock2ojavrbar" path="res://CreativeAssets/Skybox/AllSky_Night_MoonBurst Equirect.png" id="1_elw4b"]
 [ext_resource type="PackedScene" uid="uid://cfav877acqvac" path="res://Prefabs/Player.tscn" id="1_srkd8"]
 [ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_2wcig"]
 [ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_st6u8"]
@@ -7,6 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://d01g7qktpk5bw" path="res://Scenes/Gui.tscn" id="5_kytn1"]
 [ext_resource type="PackedScene" uid="uid://dbydo54wg56ua" path="res://Imports/Level1.blend" id="5_lhnwe"]
 [ext_resource type="AudioStream" uid="uid://8otjrspgh1cu" path="res://Audio/SFX/Won!.wav" id="6_8qlmv"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nn48v"]
+panorama = ExtResource("1_elw4b")
+
+[sub_resource type="Sky" id="Sky_a1fau"]
+sky_material = SubResource("PanoramaSkyMaterial_nn48v")
+
+[sub_resource type="Environment" id="Environment_06uh3"]
+background_mode = 2
+sky = SubResource("Sky_a1fau")
+fog_mode = 1
+fog_light_color = Color(0.0715372, 0.678195, 0.918925, 1)
+fog_density = 0.1775
+fog_sky_affect = 0.492
 
 [sub_resource type="Curve3D" id="Curve3D_285em"]
 _data = {
@@ -16,6 +31,9 @@ _data = {
 point_count = 15
 
 [node name="Level_1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_06uh3")
 
 [node name="GUI" parent="." instance=ExtResource("5_kytn1")]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://duuj8y4ltnxx4"]
 
-[ext_resource type="Material" uid="uid://dalimrei6uw8j" path="res://Creative Assets/Materials/Mat_TrailEmitter.tres" id="1_1sogy"]
+[ext_resource type="Material" uid="uid://dalimrei6uw8j" path="res://CreativeAssets/Materials/Mat_TrailEmitter.tres" id="1_1sogy"]
 [ext_resource type="Script" path="res://addons/trailmesh/example/Camera.gd" id="3_tpcue"]
 
 [sub_resource type="Animation" id="Animation_f5fpc"]

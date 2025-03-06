@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GD.GameJam-LocalMultiplayer"
-config/version="1.0"
+config/version="1.2"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -44,7 +44,7 @@ Bounds="OutOfBoundsColliders"
 
 [gui]
 
-theme/custom="res://Creative Assets/Theme/CoreTheme.tres"
+theme/custom="res://CreativeAssets/Theme/CoreTheme.tres"
 
 [input]
 
@@ -87,3 +87,9 @@ test2={
 [layer_names]
 
 3d_physics/layer_2="Player"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_environment="res://CreativeAssets/WorldEnvironment.tres"

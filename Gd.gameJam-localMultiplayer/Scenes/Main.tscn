@@ -1,22 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://53gt6okqwcdm"]
+[gd_scene load_steps=6 format=3 uid="uid://53gt6okqwcdm"]
 
-[ext_resource type="Texture2D" uid="uid://beguu1e6gq37f" path="res://Creative Assets/Textures/AllSky_Space_AnotherPlanet Equirect.png" id="1_cx6ym"]
-[ext_resource type="Script" path="res://Scripts/EnvCtrl.gd" id="2_rvyav"]
-[ext_resource type="Texture2D" uid="uid://cokgfix24lp2r" path="res://Creative Assets/Textures/Tex_Water_Normal.tres" id="3_re0cn"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_33lbm"]
-panorama = ExtResource("1_cx6ym")
-
-[sub_resource type="Sky" id="Sky_o51a1"]
-sky_material = SubResource("PanoramaSkyMaterial_33lbm")
-
-[sub_resource type="Environment" id="Environment_2cgjd"]
-background_mode = 2
-sky = SubResource("Sky_o51a1")
-fog_mode = 1
-fog_light_color = Color(0.0715372, 0.678195, 0.918925, 1)
-fog_density = 0.1775
-fog_sky_affect = 0.492
+[ext_resource type="Texture2D" uid="uid://cokgfix24lp2r" path="res://CreativeAssets/Textures/Tex_Water_Normal.tres" id="3_re0cn"]
 
 [sub_resource type="Shader" id="Shader_5jxiw"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
@@ -122,10 +106,6 @@ size = Vector3(1000, 1, 1000)
 plane = Plane(0, 1, 0, -5)
 
 [node name="Main" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_2cgjd")
-script = ExtResource("2_rvyav")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8377, 0.177289, 0.516554, -0.546131, 0.27194, 0.792332, 0, -0.945842, 0.324627, 0, 4.96982, 0)

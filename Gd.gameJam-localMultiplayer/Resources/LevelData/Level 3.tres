@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://3utkh2oo7l5d" path="res://Scenes/Levels/Level3.tscn" id="1_78fdi"]
 [ext_resource type="Script" path="res://Scripts/ResourceScripts/LevelDataResource.gd" id="2_7jgka"]
-[ext_resource type="Texture2D" uid="uid://c2sl2q0jwyjxt" path="res://Creative Assets/Textures/Epic_GloriousPink_EquiRect.png" id="2_t4mj1"]
+[ext_resource type="Texture2D" uid="uid://c2sl2q0jwyjxt" path="res://CreativeAssets/Textures/Epic_GloriousPink_EquiRect.png" id="2_t4mj1"]
 
 [resource]
 script = ExtResource("2_7jgka")
