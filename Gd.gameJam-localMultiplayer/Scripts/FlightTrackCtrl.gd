@@ -1,6 +1,8 @@
 extends Path3D
 
 @export var _GoalGatePrefab: PackedScene
+@export var _GoalSFX: AudioStream
+@export var _FinalGoalSFX: AudioStream
 
 var _GoalGates:Array[GoalGate] = []
 var _CurrentGoalIndex: int = 0
@@ -66,10 +68,16 @@ func _IncrementGoal() -> void:
 	
 	# Setup the next goal
 	_SetActiveGoal(_CurrentGoalIndex)
+	
+	# Play SFX
+	AudioHandler.PlaySFX(_GoalSFX)
 
 func _GoalReachedCallback() -> void:
 	# Increment Goal
 	_IncrementGoal()
 
 func _FinalGoalReached() -> void:
+	# Play Final SFX
+	AudioHandler.PlaySFX(_FinalGoalSFX)
+	
 	GameManager.CompleteLevel()

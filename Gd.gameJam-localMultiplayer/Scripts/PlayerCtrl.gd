@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 			var collider = collision.get_collider()
 			if collider.is_in_group("Bounds"):
 				_HitBounds = true
-				AudioHandler.PlaySFX(_ExplosionSFX)
+				AudioHandler.PlaySFX(_ExplosionSFX, "Explotion")
 				GameManager.FailLevel()
 				
 	

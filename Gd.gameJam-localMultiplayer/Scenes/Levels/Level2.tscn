@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdgi143783tc5"]
+[gd_scene load_steps=9 format=3 uid="uid://bdgi143783tc5"]
 
 [ext_resource type="PackedScene" uid="uid://d01g7qktpk5bw" path="res://Scenes/Gui.tscn" id="1_1i3dx"]
 [ext_resource type="PackedScene" uid="uid://cfav877acqvac" path="res://Prefabs/Player.tscn" id="2_q1fei"]
 [ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_p318u"]
 [ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_e8315"]
+[ext_resource type="AudioStream" uid="uid://ihxj1kvijllp" path="res://Audio/SFX/win sound 2-1.wav" id="5_4depf"]
 [ext_resource type="PackedScene" uid="uid://dbydo54wg56ua" path="res://Imports/Level1.blend" id="5_sob1p"]
+[ext_resource type="AudioStream" uid="uid://8otjrspgh1cu" path="res://Audio/SFX/Won!.wav" id="6_1uskb"]
 
 [sub_resource type="Curve3D" id="Curve3D_285em"]
 _data = {
@@ -29,6 +31,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8122, 0.638767, 2.62348)
 curve = SubResource("Curve3D_285em")
 script = ExtResource("3_p318u")
 _GoalGatePrefab = ExtResource("4_e8315")
+_GoalSFX = ExtResource("5_4depf")
+_FinalGoalSFX = ExtResource("6_1uskb")
 
 [node name="Level1" parent="." instance=ExtResource("5_sob1p")]
 
