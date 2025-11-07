@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bh7d33k8gfktf"]
 
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_7g2xf"]
-[ext_resource type="Script" path="res://Scripts/MenuScripts/WinMenu.gd" id="1_8ysoa"]
+[ext_resource type="Script" uid="uid://ctmjqsld7wfjr" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_7g2xf"]
+[ext_resource type="Script" uid="uid://ctcvhmyq8c6fh" path="res://Scripts/MenuScripts/WinMenu.gd" id="1_8ysoa"]
 
 [node name="WinMenu" type="CanvasLayer" node_paths=PackedStringArray("_TxtYourTime", "_TxtNewBestTime")]
 process_mode = 3

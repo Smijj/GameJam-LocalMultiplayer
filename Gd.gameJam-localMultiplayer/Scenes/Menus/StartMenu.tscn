@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://g6r5rxpgx4d7"]
 
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_1isx7"]
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnQuit.gd" id="2_qidxc"]
+[ext_resource type="Script" uid="uid://ctmjqsld7wfjr" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_1isx7"]
+[ext_resource type="Script" uid="uid://ddcywvbuq73u1" path="res://Scripts/MenuScripts/BtnQuit.gd" id="2_qidxc"]
 
 [node name="StartMenu" type="CanvasLayer"]
 process_mode = 3
@@ -37,6 +37,12 @@ theme_type_variation = &"HeaderLarge"
 text = "Turbulence Together"
 horizontal_alignment = 1
 
+[node name="SubTitle" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "By Lil Mochi Studios"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -57,6 +63,7 @@ script = ExtResource("1_1isx7")
 _FocusFirst = true
 
 [node name="Btn_Quit" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "Quit"
 script = ExtResource("2_qidxc")

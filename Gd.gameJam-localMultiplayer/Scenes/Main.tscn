@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://53gt6okqwcdm"]
 
 [ext_resource type="Texture2D" uid="uid://beguu1e6gq37f" path="res://Creative Assets/Textures/AllSky_Space_AnotherPlanet Equirect.png" id="1_cx6ym"]
-[ext_resource type="Script" path="res://Scripts/EnvCtrl.gd" id="2_rvyav"]
+[ext_resource type="Script" uid="uid://bvs7b4tvyyo1p" path="res://Scripts/EnvCtrl.gd" id="2_rvyav"]
 [ext_resource type="Texture2D" uid="uid://cokgfix24lp2r" path="res://Creative Assets/Textures/Tex_Water_Normal.tres" id="3_re0cn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_33lbm"]
@@ -13,19 +13,31 @@ sky_material = SubResource("PanoramaSkyMaterial_33lbm")
 [sub_resource type="Environment" id="Environment_2cgjd"]
 background_mode = 2
 sky = SubResource("Sky_o51a1")
+fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.0715372, 0.678195, 0.918925, 1)
-fog_density = 0.1775
-fog_sky_affect = 0.492
+fog_density = 1.0
+fog_sky_affect = 0.563
+fog_depth_curve = 0.517632
+fog_depth_begin = 0.0
+fog_depth_end = 2500.0
+volumetric_fog_sky_affect = 0.782
 
-[sub_resource type="Shader" id="Shader_5jxiw"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
+[sub_resource type="CylinderMesh" id="CylinderMesh_rgh2o"]
+top_radius = 1000.0
+height = 1.0
+
+[sub_resource type="Shader" id="Shader_idj7w"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
 
 shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
 
+uniform float scroll_speed = 0.1;
+
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
 uniform float point_size : hint_range(0.1, 128.0, 0.1);
 
 uniform float roughness : hint_range(0.0, 1.0);
@@ -63,11 +75,9 @@ void vertex() {
 
 	// UV1 Triplanar: Enabled (with World Triplanar)
 	uv1_power_normal = pow(abs(normal), vec3(uv1_blend_sharpness));
-	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset + TIME * 0.05;
+	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset + (TIME * scroll_speed);
 	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
 	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
-	
-	//texture(texture_normal, UV).x * TIME * 0.05;
 }
 
 vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
@@ -97,26 +107,24 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ydbq3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kln2b"]
 render_priority = 0
-shader = SubResource("Shader_5jxiw")
+shader = SubResource("Shader_idj7w")
+shader_parameter/scroll_speed = 0.1
 shader_parameter/albedo = Color(0, 0.407843, 0.933333, 0.976471)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.05
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
+shader_parameter/texture_normal = ExtResource("3_re0cn")
 shader_parameter/normal_scale = 1.0
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/uv1_scale = Vector3(0.03, 0.03, 0.03)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_normal = ExtResource("3_re0cn")
-
-[sub_resource type="BoxMesh" id="BoxMesh_nkd6d"]
-material = SubResource("ShaderMaterial_ydbq3")
-size = Vector3(1000, 1, 1000)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_37fkw"]
 plane = Plane(0, 1, 0, -5)
@@ -130,10 +138,12 @@ script = ExtResource("2_rvyav")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8377, 0.177289, 0.516554, -0.546131, 0.27194, 0.792332, 0, -0.945842, 0.324627, 0, 4.96982, 0)
 light_color = Color(0.899146, 0.769218, 0.718286, 1)
+shadow_enabled = true
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
-mesh = SubResource("BoxMesh_nkd6d")
+mesh = SubResource("CylinderMesh_rgh2o")
+surface_material_override/0 = SubResource("ShaderMaterial_kln2b")
 
 [node name="WaterBoundary" type="StaticBody3D" parent="." groups=["Bounds"]]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d01g7qktpk5bw" path="res://Scenes/Gui.tscn" id="1_x0p76"]
 [ext_resource type="PackedScene" uid="uid://cfav877acqvac" path="res://Prefabs/Player.tscn" id="2_iqhqg"]
-[ext_resource type="Script" path="res://Scripts/FlightTrackCtrl.gd" id="3_ude42"]
+[ext_resource type="Script" uid="uid://cf4uqvqexy7nk" path="res://Scripts/FlightTrackCtrl.gd" id="3_ude42"]
 [ext_resource type="PackedScene" uid="uid://b2m76kq7x8vxk" path="res://Prefabs/GoalGate.tscn" id="4_2egie"]
 [ext_resource type="PackedScene" uid="uid://dbydo54wg56ua" path="res://Imports/Level1.blend" id="5_1qwac"]
 [ext_resource type="AudioStream" uid="uid://ihxj1kvijllp" path="res://Audio/SFX/win sound 2-1.wav" id="5_oces4"]

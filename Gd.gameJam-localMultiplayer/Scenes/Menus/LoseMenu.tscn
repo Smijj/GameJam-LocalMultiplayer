@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://umw1xjltprsq"]
 
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_468cn"]
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnRestart.gd" id="1_ob368"]
+[ext_resource type="Script" uid="uid://ctmjqsld7wfjr" path="res://Scripts/MenuScripts/BtnToLevelSelect.gd" id="1_468cn"]
+[ext_resource type="Script" uid="uid://dmykqmxo4wbxh" path="res://Scripts/MenuScripts/BtnRestart.gd" id="1_ob368"]
 
 [node name="LoseMenu" type="CanvasLayer"]
 process_mode = 3

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://nym5dcaeu7sy"]
 
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnResume.gd" id="1_a65t1"]
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnToMenu.gd" id="2_bfm8i"]
-[ext_resource type="Script" path="res://Scripts/MenuScripts/BtnRestart.gd" id="2_tgng4"]
+[ext_resource type="Script" uid="uid://dvlt847ntg2in" path="res://Scripts/MenuScripts/BtnResume.gd" id="1_a65t1"]
+[ext_resource type="Script" uid="uid://r40ettn1r7n1" path="res://Scripts/MenuScripts/BtnToMenu.gd" id="2_bfm8i"]
+[ext_resource type="Script" uid="uid://dmykqmxo4wbxh" path="res://Scripts/MenuScripts/BtnRestart.gd" id="2_tgng4"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
